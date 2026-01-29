@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 30px 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #fff;
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+
+    .no {
+      background: rgba(255,255,255,0.3);
+      color: white;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="content" class="card">
+  <h1>🥺 DO YOU WANT TO FORGIVE ME?</h1>
+  <button class="yes" onclick="showMessage()">Yes ❤️</button>
+  <button class="no" onclick="sayNo()">No</button>
+</div>
+
+<script>
+  function showMessage() {
+    document.getElementById("content").innerHTML = `
+      <h1>❤️ Heyy Mookie 🥹❤️</h1>
+      <p>
+        I wanna tell you that I took the time to think about what you said I must think about,
+        and yea I know where I stand.
+        <br><br>
+        Apologizing is not enough so I just wanna promise you that I won’t leave or give you space
+        whenever we r not okay.
+        <br><br>
+        And whenever you down or moody I’ll be there for you even if we r just quiet.
+        <br><br>
+        I wanna apologize for how I acted yesterday.
+        <br><br>
+        I love you 🥹❤️ and please forgive me.
+      </p>
+      <p><strong>— Flashie 💞</strong></p>
+    `;
+    startHearts();
+  }
+
+  function sayNo() {
+    document.getElementById("content").innerHTML = `
+      <h1>🥺 Please...</h1>
+      <p>
+        You must be willing to forgive me in order to read my apology.
+      </p>
+      <p><strong>Do you want to forgive me?</strong></p>
+      <button class="yes" onclick="showMessage()">Yes ❤️</button>
+      <button class="no" onclick="sayNo()">No</button>
+    `;
+  }
+
+  function startHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (16 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  }
+</script>
+
+</body>
+</html>
